@@ -52,8 +52,7 @@
                     <tr>
 
                         <th>ID</th>
-                        <th>EstokPsku</th>
-                        <th>WayfairPartNumber</th>
+                        <th>PO#</th>
                         <th>Created_At</th>
                         <th>Updated_At</th>
 
@@ -63,8 +62,7 @@
                     {% for row in pos %}
                     <tr>
                         <td>{{row.id}}</td>
-                        <td>{{row.EstokPsku}}</td>
-                        <td>{{row.WayfairPartNumber}}</td>
+                        <td>{{row.PurchaseOrderNumber}}</td>
                         <td>{{row.Created_At}}</td>
                         <td>{{row.Updated_At}}</td>
                         <td>
@@ -89,13 +87,9 @@
                                 <div class="modal-body">
                                     <form action="{{url_for('update')}}" method="POST">
                                         <div class="form-group">
-                                            <label>EstokPsku:</label>
+                                            <label>PO#:</label>
                                             <input name="id" type="hidden" value="{{row.id}}">
-                                            <input class="form-control" name="ep" type="text" value="{{row.EstokPsku}}">
-                                        </div>
-                                        <div class="form-group">
-                                            <label>WayfairPartNumber:</label>
-                                            <input class="form-control" name="wyp" type="text" value="{{row.WayfairPartNumber}}">
+                                            <input class="form-control" name="ep" type="text" value="{{row.PurchaseOrderNumber}}">
                                         </div>
                                         <div class="form-group">
                                             <button class="btn btn-primary" type="submit">Update</button>
@@ -117,29 +111,21 @@
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h4 class="modal-title">Add Employee</h4>
+                            <h4 class="modal-title">Add</h4>
                         </div>
                         <div class="modal-body">
                             <form action="{{url_for('insert')}}" method="POST">
 
                                 <div class="form-group">
-                                    <label>EstokPsku:</label>
+                                    <label>PO#:</label>
                                     <input class="form-control" name="ep" required="1" type="text">
 
 
                                 </div>
 
-
-                                <div class="form-group">
-                                    <label>WayfairPartNumber:</label>
-                                    <input class="form-control" name="wyp" required="1" type="text">
-                                </div>
-
-
                                 <div class="form-group">
 
-
-                                    <button class="btn btn-primary" type="submit">Add Employee</button>
+                                    <button class="btn btn-primary" type="submit">Add</button>
 
                                 </div>
 

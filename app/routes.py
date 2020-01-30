@@ -10,13 +10,11 @@ from app.models import WayfairManualProcesseds
 def index():
 
     if request.form:
-        EstokPsku = request.form.get('ep')
-        WayfairPartNumber = request.form.get('wyp')
+        PurchaseOrderNumber = request.form.get('ep')
         Created_At = datetime.now()
 
-        po = WayfairManualProcesseds(EstokPsku,WayfairPartNumber,Created_At)
+        po = WayfairManualProcesseds(PurchaseOrderNumber,Created_At)
         db.session.add(po)
-        #db.create_all()
         db.session.commit()
 
     all_po = WayfairManualProcesseds.query.all()
@@ -37,11 +35,10 @@ def delete(id):
 @app.route('/insert', methods=['POST'])
 def insert():
     if request.method == 'POST':
-        EstokPsku = request.form.get('ep')
-        WayfairPartNumber = request.form.get('wyp')
+        PurchaseOrderNumber = request.form.get('ep')
         Created_At = datetime.now()
 
-        po = WayfairManualProcesseds(EstokPsku,WayfairPartNumber,Created_At)
+        po = WayfairManualProcesseds(PurchaseOrderNumber, Created_At)
         db.session.add(po)
         db.session.commit()
 
@@ -55,8 +52,7 @@ def update():
     if request.method == 'POST':
         my_data = WayfairManualProcesseds.query.get(request.form.get('id'))
 
-        my_data.EstokPsku = request.form.get('ep')
-        my_data.WayfairPartNumber = request.form.get('wyp')
+        my_data.PurchaseOrderNumber = request.form.get('ep')
         my_data.Updated_At = datetime.now()
 
         db.session.commit()
